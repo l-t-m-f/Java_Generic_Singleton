@@ -4,4 +4,8 @@ public class SingletonA extends Multiton {
     super(secret);
   }
 
+  public void DoSomethingUnique() {
+    System.out.println("Something only SingletonA could print");
+  }
+
 }

@@ -20,6 +20,9 @@ public class Demo {
     test4 = (SingletonB) Multiton.GetInstance(SingletonB.class, "goodbye");
     test4.saySecret();
 
+    test.DoSomethingUnique();
+    test3.DoSomethingElseUnique();
+
     // Doesn't get created because RandomObj isn't derived from Multiton
     SingletonA notAValidSingleton;
     notAValidSingleton = (SingletonA) Multiton.GetInstance(RandomObj.class, "denied");
