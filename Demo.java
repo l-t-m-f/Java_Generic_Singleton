@@ -1,6 +1,6 @@
 /*
  * Generic Multiton Java by Émile Fréchette.
- * Any suggestions are welcome. 2022
+ * Any suggestions are welcome. v1.1 2022
  * 
  */
 
