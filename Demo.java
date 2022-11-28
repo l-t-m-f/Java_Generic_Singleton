@@ -1,6 +1,5 @@
 /*
- * Generic Multiton Java
- * This work is in the public domain and was created by Émile Fréchette.
+ * Generic Multiton Java by Émile Fréchette.
  * Any suggestions are welcome. 2022
  * 
  */
