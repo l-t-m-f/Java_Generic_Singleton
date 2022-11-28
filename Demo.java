@@ -1,9 +1,8 @@
 import java.lang.reflect.InvocationTargetException;
 
 public class Demo {
-  public static void main(String[] args)
-      throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException,
-      IllegalArgumentException, InvocationTargetException, ClassNotFoundException {
+  public static void main(String[] args) throws NoSuchMethodException, SecurityException, IllegalAccessException,
+      IllegalArgumentException, InvocationTargetException {
 
     SingletonA test;
     test = (SingletonA) Multiton.GetInstance(SingletonA.class, "hola");
