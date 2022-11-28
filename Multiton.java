@@ -30,16 +30,16 @@ abstract public class Multiton {
    * child of Multiton,
    * the function will return null!
    * Secret can be changed for whatever state to pass into the Singleton's
-   * constructor
+   * constructor. Doesn't have to be a String necessarely.
    */
-  public static Multiton GetInstance(Class<?> singletonType, String secret)
-      throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
-      InvocationTargetException {
+  @SuppressWarnings("Cast")
+  public static <T extends Multiton> T GetInstance(Class<T> singletonType, String secret) 
+    throws InvocationTargetException, InstantiationException, IllegalAccessException, IllegalArgumentException, NoSuchMethodException, SecurityException {
     final ReentrantLock multitonLock = new ReentrantLock();
     multitonLock.lock();
     try {
       Multiton instance;
-      Constructor<?> singletonConstructor;
+      Constructor<T> singletonConstructor;
       try {
         if (getInstances().containsKey(singletonType) == false) {
           Class<?>[] parameterTypes = { String.class };
@@ -47,22 +47,11 @@ abstract public class Multiton {
           instance = (Multiton) singletonConstructor.newInstance(secret);
           getInstances().put(singletonType, instance);
         }
-        return (Multiton) getInstances().get(singletonType);
-      } catch (NoSuchMethodException e) {
-        System.out.println(e.getClass().getSimpleName() + ": You requested an invalid singleton!");
-        return null;
-      } catch (InstantiationException e) {
-        System.out.println(e.getClass().getSimpleName() + ": You requested an invalid singleton!");
-        return null;
-      } catch (IllegalArgumentException e) {
-        System.out.println(e.getClass().getSimpleName()
-            + ": Something went wrong during the creation of the singleton's constructor.");
-        return null;
-      } catch (SecurityException e) {
-        System.out.println(e.getClass().getSimpleName() + ": Uh oh! Something bad happened!");
-        return null;
-      } catch (IllegalAccessException e) {
-        System.out.println(e.getClass().getSimpleName() + ": Uh oh! Something bad happened!");
+        return (T) getInstances().get(singletonType);
+      }
+      catch (InvocationTargetException | InstantiationException | IllegalAccessException | IllegalArgumentException | NoSuchMethodException | SecurityException e)
+      {
+        System.out.println(e.getClass().getSimpleName() + ": Singleton was not acquired and should be discarded (null).");
         return null;
       }
     } finally {
