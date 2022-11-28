@@ -6,7 +6,7 @@ import java.lang.Class;
 
 abstract public class Multiton {
 
-  private static final HashMap<Class<?>, Multiton> _instances = new HashMap<>();
+  private static final HashMap<Class<?>, Multiton> _instances = new HashMap<>(10);
   protected String singletonTester;
 
   protected Multiton(String secret) {
