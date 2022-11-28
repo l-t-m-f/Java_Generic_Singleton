@@ -14,6 +14,11 @@ The GetInstance is generic and safe to an extent (it can return anything that is
 
 Each Singleton is contained within the HashMap of the Multiton class and each member of the HashMap can only be created once.
 
-Btw if that was not clear, the second argument of the method can be stripped out and changed for whatever you want. I just used to it demonstrate that the Multiton was working (see the Main method).
+Btw if that was not clear, the second argument of the method can be stripped out and changed for whatever you want. I just used to it demonstrate that the Multiton was working (see the main method).
 
 TO-DO: Improve line 45 to derive the parameterTypes from Multiton rather than leaving up to be hardcoded like that.
+
+ 
+ 
+ Programmed by
+ Émile Fréchette
