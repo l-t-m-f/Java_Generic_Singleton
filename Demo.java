@@ -1,3 +1,10 @@
+/*
+ * Generic Multiton Java
+ * This work is in the public domain and was created by Émile Fréchette.
+ * Any suggestions are welcome. 2022
+ * 
+ */
+
 import java.lang.reflect.InvocationTargetException;
 
 public class Demo {
@@ -7,6 +14,7 @@ public class Demo {
     SingletonA test;
     test = Multiton.GetInstance(SingletonA.class, "hola");
     test.saySecret();
+
     // Doesn't get created because Multiton already contains a SingletonA instance
     SingletonA test2;
     test2 = Multiton.GetInstance(SingletonA.class, "bye bye");
@@ -15,11 +23,14 @@ public class Demo {
     SingletonB test3;
     test3 = Multiton.GetInstance(SingletonB.class, "hello");
     test3.saySecret();
+
     // Doesn't get created because Multiton already contains a SingletonB instance
     SingletonB test4;
     test4 = Multiton.GetInstance(SingletonB.class, "goodbye");
     test4.saySecret();
 
+    /* It's useful to have a generic singleton factory (aka Multiton) because Singletons
+    are not always exactly the same one from another. But grouping them under a common management is very useful. */ 
     test.DoSomethingUnique();
     test3.DoSomethingElseUnique();
 

@@ -42,7 +42,7 @@ abstract public class Multiton {
       Constructor<T> singletonConstructor;
       try {
         if (getInstances().containsKey(singletonType) == false) {
-          Class<?>[] parameterTypes = { String.class };
+          Class<?>[] parameterTypes = { String.class }; // must-match Multiton's constructor. to improve. (should be enforced)
           singletonConstructor = singletonType.getDeclaredConstructor(parameterTypes);
           instance = (Multiton) singletonConstructor.newInstance(secret);
           getInstances().put(singletonType, instance);
