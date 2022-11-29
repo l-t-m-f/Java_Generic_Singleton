@@ -1,7 +1,11 @@
-public class SingletonB extends MultiSingleton {
+public class SingletonB extends Multiton {
 
   protected SingletonB(String secret) {
     super(secret);
+  }
+
+  protected SingletonB(int secret) {
+    super("" + secret);
   }
 
   public void DoSomethingElseUnique() {
