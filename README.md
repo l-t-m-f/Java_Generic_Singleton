@@ -12,7 +12,7 @@ The GetInstance is generic and safe to an extent (it can return anything that is
 2. If the GetInstance() method's first argument is not a child of Multiton, then the desirable "The method GetInstance(Class<T>, String) in the type Multiton is not applicable for the arguments (Class<NOT_A_MULTITON_CHILD>, String)" error message prevents compilation again.
 
 Each Singleton is contained within the HashMap of the Multiton class and each member of the HashMap can only be created once.
-This is what is divergent from a traditional Multiton. Instead of returning muliple instance of the same class, I return one instance of multiple subclasses.
+This is what is divergent from a traditional Multiton. Instead of returning muliple instance of the same class, I return one instance of any of the multiple subclasses. Each is unique.
  
  Programmed by
  Émile Fréchette
