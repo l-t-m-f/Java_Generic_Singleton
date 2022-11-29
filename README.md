@@ -3,7 +3,7 @@
 This is a generic Singleton. Basically, a Singleton factory which can create subclasses.
 (This is a learning project. Feel free to point out any flaws.)
 
-You can create new subclasses of Singleton and instanciate them with Mutltiton.GetInstance(Class<T>, Object[]) or alternatively Mutltiton.GetInstance(Class<T>, Class<?>[], Object[]) to request a specific constructor (parameter 2). 
+You can create new subclasses of Singleton and instanciate them with Singleton.GetInstance(Class<T>, Object[]) or alternatively Singleton.GetInstance(Class<T>, Class<?>[], Object[]) to request a specific constructor (parameter 2). 
 
 The GetInstance is generic and safe to an extent (it can return anything that is a subclass of Singleton) because:
 
