@@ -3,7 +3,7 @@
 This is a generic multiton. Basically, a Singleton factory which can create subclasses.
 (This is a learning project. Feel free to point out any flaws.)
 
-You can create new subclasses of Multiton and instanciate them with Mutltiton.GetInstance(Class<T>, Object[]) or alternatively Mutltiton.GetInstance(Class<T>, Class<?>[], Object[]) to request a specific constructor (parameter 2). 
+You can create new subclasses of Multiton and instanciate them with Mutltiton.GetInstance(Class<T>, Object[]) or alternatively Mutltiton.GetInstance(Class<T>, Class<?>[], Object[]) to request a specific constructor (parameter 2). See Demo.java for usage.
 
 The GetInstance is generic and safe to an extent (it can return anything that is a subclass of Multiton) because:
 
