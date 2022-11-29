@@ -1,4 +1,4 @@
-public class SingletonA extends Multiton {
+public class SingletonA extends MultiSingleton {
 
   protected SingletonA(String secret) {
     super(secret);

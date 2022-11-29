@@ -11,21 +11,21 @@ public class Demo {
       IllegalArgumentException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
     SingletonA test;
-    test = Multiton.GetInstance(SingletonA.class, "hola");
+    test = MultiSingleton.GetInstance(SingletonA.class, "hola");
     test.saySecret();
 
     // Doesn't get created because Multiton already contains a SingletonA instance
     SingletonA test2;
-    test2 = Multiton.GetInstance(SingletonA.class, "bye bye");
+    test2 = MultiSingleton.GetInstance(SingletonA.class, "bye bye");
     test2.saySecret();
 
     SingletonB test3;
-    test3 = Multiton.GetInstance(SingletonB.class, "hello");
+    test3 = MultiSingleton.GetInstance(SingletonB.class, "hello");
     test3.saySecret();
 
     // Doesn't get created because Multiton already contains a SingletonB instance
     SingletonB test4;
-    test4 = Multiton.GetInstance(SingletonB.class, "goodbye");
+    test4 = MultiSingleton.GetInstance(SingletonB.class, "goodbye");
     test4.saySecret();
 
     /* It's useful to have a generic singleton factory (aka Multiton) because Singletons

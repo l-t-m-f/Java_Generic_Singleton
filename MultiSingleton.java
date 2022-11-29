@@ -4,18 +4,18 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.Class;
 
-abstract public class Multiton {
+abstract public class MultiSingleton {
 
-  private static final HashMap<Class<?>, Multiton> _instances = new HashMap<>(10);
+  private static final HashMap<Class<?>, MultiSingleton> _instances = new HashMap<>(10);
   protected String singletonTester;
 
-  protected Multiton(String secret) {
+  protected MultiSingleton(String secret) {
     singletonTester = secret;
   }
 
   // Getters
 
-  private static HashMap<Class<?>, Multiton> getInstances() {
+  private static HashMap<Class<?>, MultiSingleton> getInstances() {
     return _instances;
   }
 
@@ -33,23 +33,22 @@ abstract public class Multiton {
    * constructor. Doesn't have to be a String necessarely.
    */
   @SuppressWarnings("Cast")
-  public static <T extends Multiton> T GetInstance(Class<T> singletonType, String secret) 
+  public static <T extends MultiSingleton> T GetInstance(Class<T> singletonType, String secret) 
     throws InvocationTargetException, InstantiationException, IllegalAccessException, IllegalArgumentException, NoSuchMethodException, SecurityException {
     final ReentrantLock multitonLock = new ReentrantLock();
     multitonLock.lock();
     try {
-      Multiton instance;
-      Constructor<T> singletonConstructor;
+      MultiSingleton instance;
+      Constructor<?> singletonConstructor;
       try {
         if (getInstances().containsKey(singletonType) == false) {
-          Class<?>[] parameterTypes = { String.class }; // must-match Multiton's constructor. to improve. (should be enforced)
-          singletonConstructor = singletonType.getDeclaredConstructor(parameterTypes);
-          instance = (Multiton) singletonConstructor.newInstance(secret);
+          singletonConstructor = singletonType.getDeclaredConstructors()[0];
+          instance = (MultiSingleton) singletonConstructor.newInstance(secret);
           getInstances().put(singletonType, instance);
         }
         return (T) getInstances().get(singletonType);
       }
-      catch (InvocationTargetException | InstantiationException | IllegalAccessException | IllegalArgumentException | NoSuchMethodException | SecurityException e)
+      catch (InvocationTargetException | InstantiationException | IllegalAccessException | IllegalArgumentException | SecurityException e)
       {
         System.out.println(e.getClass().getSimpleName() + ": Singleton was not acquired and should be discarded (null).");
         return null;
