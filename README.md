@@ -1,10 +1,9 @@
 # Generic Multiton
- Pseudo-Generic Multiton in Java
 
-This is a  Multiton class. Basically, a Singleton factory. It's safe and generic (at least its supposed to be).
+This is a generic multiton. Basically, a Singleton factory which can create subclasses.
 (This is a learning project. Feel free to point out any flaws.)
 
-You can create new subclasses of Multiton and instanciate them with Mutltiton.GetInstance("NAME_YOUR_SINGLETON".class, "Other_string_to_remove_or_change_in_your_implementation"). 
+You can create new subclasses of Multiton and instanciate them with Mutltiton.GetInstance(Class<T>, Object[]) or alternatively Mutltiton.GetInstance(Class<T>, Class<?>[], Object[]) to request a specific constructor (parameter 2). 
 
 The GetInstance is generic and safe to an extent (it can return anything that is a subclass of Multiton) because:
 
@@ -13,12 +12,7 @@ The GetInstance is generic and safe to an extent (it can return anything that is
 2. If the GetInstance() method's first argument is not a child of Multiton, then the desirable "The method GetInstance(Class<T>, String) in the type Multiton is not applicable for the arguments (Class<NOT_A_MULTITON_CHILD>, String)" error message prevents compilation again.
 
 Each Singleton is contained within the HashMap of the Multiton class and each member of the HashMap can only be created once.
-
-Btw if that was not clear, the second argument of the method can be stripped out and changed for whatever you want. I just used to it demonstrate that the Multiton was working (see the main method).
-
-TO-DO: Improve line 45 to derive the parameterTypes from Multiton rather than leaving up to be hardcoded like that.
-
- 
+This is what is divergent from a traditional Multiton. Instead of returning muliple instance of the same class, I return one instance of multiple subclasses.
  
  Programmed by
  Émile Fréchette

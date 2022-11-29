@@ -38,13 +38,13 @@ public class Demo {
     if(Objects.isNull(test) == false) test.DoSomethingUnique();
     if(Objects.isNull(test3) == false) test3.DoSomethingElseUnique(); // not executed
 
-    // SingletonA notAValidSingleton;
+     SingletonA notAValidSingleton;
     // Doesn't get created because RandomObj isn't derived from Multiton
-    // notAValidSingleton = Multiton.GetInstance(RandomObj.class, "denied");
+     notAValidSingleton = Multiton.GetInstance(RandomObj.class, new Object[] { "denied" });
 
     // Build error because of type mismatch between generic type of GetInstances and
     // type of the first parameter
-    // notAValidSingleton = Multiton.GetInstance(SingletonB.class, "denied");
+     notAValidSingleton = Multiton.GetInstance(SingletonB.class, new Object[] { "denied" });
 
   }
 }
